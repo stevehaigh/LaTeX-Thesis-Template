@@ -1,0 +1,57 @@
+{
+  "folders": [
+    { "path": "." }
+  ],
+  "settings": {
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "latexmk (pdf)",
+        "tools": ["latexmk"]
+      }
+    ],
+    "latex-workshop.latex.tools": [
+      {
+        "name": "latexmk",
+        "command": "latexmk",
+        "args": [
+          "-pdf",
+          "-interaction=nonstopmode",
+          "-synctex=1",
+          "%DOC%"
+        ]
+      }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.clean.fileTypes": [
+      "*.aux",
+      "*.bbl",
+      "*.blg",
+      "*.fdb_latexmk",
+      "*.fls",
+      "*.log",
+      "*.out",
+      "*.synctex.gz",
+      "*.toc",
+      "*.lof",
+      "*.lot"
+    ],
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/.DS_Store": true,
+      "**/*.aux": true,
+      "**/*.bbl": true,
+      "**/*.blg": true,
+      "**/*.fdb_latexmk": true,
+      "**/*.fls": true,
+      "**/*.log": true,
+      "**/*.out": true,
+      "**/*.synctex.gz": true,
+      "**/*.toc": true,
+      "**/*.lof": true,
+      "**/*.lot": true
+    },
+    "editor.wordWrap": "on",
+    "cSpell.language": "en-GB"
+  }
+}

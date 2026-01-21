@@ -1,0 +1,52 @@
+% Preamble: Package imports and custom settings
+
+% Language and encoding
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% Fonts and typography
+\usepackage{setspace}
+\onehalfspacing% 1.5 line spacing (common for dissertations)
+\usepackage{lmodern}
+
+% Margins
+\usepackage[margin=1in]{geometry}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfigure}
+
+% Mathematics
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+
+% Cross-references and links
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black}
+
+% Smart quotes (recommended for biblatex)
+\usepackage{csquotes}
+
+% Bibliography (using biblatex for Zotero compatibility)
+\usepackage[backend=biber,style=apa]{biblatex}
+\addbibresource{bibliography/references.bib}
+
+% Code listings (if needed)
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily, breaklines=true}
+
+% Customization
+\renewcommand{\chaptername}{Chapter}
+\setcounter{tocdepth}{2}
+
+% Abstract environment for book class
+\newenvironment{abstract}{%
+  \chapter*{Abstract}
+}{}

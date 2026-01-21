@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{book}
+
+% Import preamble
+\input{settings/preamble.tex}
+
+% Document metadata
+\title{My Dissertation Title}
+\author{Author Name}
+\date{\today}
+
+\begin{document}
+
+% Frontmatter
+\frontmatter
+
+\maketitle
+
+\begin{abstract}
+\input{frontmatter/abstract.tex}
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Mainmatter
+\mainmatter%
+
+\chapter{Introduction}
+\input{chapters/01_introduction.tex}
+
+\chapter{Literature Review}
+\input{chapters/02_literature_review.tex}
+
+\chapter{Methodology}
+\input{chapters/03_methodology.tex}
+
+\chapter{Results}
+\input{chapters/04_results.tex}
+
+\chapter{Discussion}
+\input{chapters/05_discussion.tex}
+
+\chapter{Conclusion}
+\input{chapters/06_conclusion.tex}
+
+% Backmatter
+\backmatter%
+
+\appendix
+\chapter{Appendix A}
+\input{appendices/appendix_a.tex}
+
+% Bibliography
+\printbibliography%
+
+\end{document}
