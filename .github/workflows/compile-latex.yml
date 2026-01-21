@@ -1,4 +1,4 @@
-name: Build Dissertation PDF
+name: Build Dissertation (All Formats)
 
 on:
   push:
@@ -18,21 +18,40 @@ jobs:
       with:
         tinytex: true
     
-    - name: Build dissertation with Quarto
-      run: quarto render --to pdf
+    - name: Build dissertation (all formats)
+      run: quarto render
     
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       if: always()
       with:
         name: dissertation-pdf
-        path: _output/index.pdf
+        path: _output/Dissertation-Title.pdf
+        retention-days: 30
+    
+    - name: Upload EPUB artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: dissertation-epub
+        path: _output/Dissertation-Title.epub
+        retention-days: 30
+    
+    - name: Upload DOCX artifact
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: dissertation-docx
+        path: _output/Dissertation-Title.docx
         retention-days: 30
     
     - name: Upload to release (on tag)
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: _output/index.pdf
+        files: |
+          _output/Dissertation-Title.pdf
+          _output/Dissertation-Title.epub
+          _output/Dissertation-Title.docx
         name: Dissertation Build ${{ github.ref_name }}
         prerelease: false

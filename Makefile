@@ -10,14 +10,23 @@ BIBER = biber
 # Quarto output
 QUARTO_OUT = dissertation.pdf
 
-.PHONY: all clean cleanall watch help quarto quarto-watch quarto-cleanlatex tex
+.PHONY: all clean cleanall watch help quarto epub docx quarto-watch quarto-clean latex tex
 
-# Default target: build with Quarto (recommended)
-all: quarto
+# Default target: build all formats with Quarto (recommended)
+all:
+	quarto render
 
 # Build PDF using Quarto (recommended)
 quarto:
 	quarto render --to pdf
+
+# Build EPUB using Quarto
+epub:
+	quarto render --to epub
+
+# Build DOCX using Quarto
+docx:
+	quarto render --to docx
 
 # Continuous compilation with Quarto (watch mode)
 
@@ -64,8 +73,11 @@ cleanall: quarto-clean
 # Help target
 help:
 	@echo "Quarto targets (recommended):"
-	@echo "  make           - Build dissertation PDF with Quarto (default)"
-	@echo "  make quarto    - Build dissertation PDF with Quarto"
+	@echo "  make           - Build all formats (PDF, EPUB, DOCX) with Quarto (default)"
+	@echo "  make quarto    - Build PDF only"
+	@echo "  make epub      - Build EPUB only"
+	@echo "  make docx      - Build DOCX only"
+	@echo "  make latex     - Generate LaTeX files from Quarto (no PDF)"
 	@echo "  make quarto-watch - Live preview with Quarto"
 	@echo "  make quarto-clean  - Clean Quarto build artifacts"
 	@echo ""

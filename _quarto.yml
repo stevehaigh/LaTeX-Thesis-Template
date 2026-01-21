@@ -30,3 +30,7 @@ format:
       - right=1in
     linestretch: 1.5
     number-sections: true
+  epub:
+    number-sections: true
+  docx:
+    number-sections: true
