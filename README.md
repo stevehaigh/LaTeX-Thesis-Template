@@ -1,14 +1,15 @@
-# LaTeX Thesis Template
+# LaTeX Thesis Template (Quarto Edition)
 
-A simple, clean LaTeX template for academic theses and dissertations. This template uses the `book` document class with biblatex for bibliography management, making it compatible with Zotero and other reference managers. GitHub Actions are integrated to automatically compile your PDF on every push.
+A modern, clean Quarto-based template for academic theses and dissertations. Write in Markdown, leverage Quarto's powerful features for citations, cross-references, and figures, and compile to PDF with automatic bibliography management using biblatex. GitHub Actions automatically build and publish your dissertation on every push.
 
 ## GitHub Actions Integration
 
-This repository includes an automated workflow that compiles your LaTeX document whenever you push changes to the main branch.
+This repository includes an automated workflow that compiles your dissertation whenever you push changes to the main branch.
 
 **What the GitHub Action does:**
-- Automatically installs TeX Live (including latexmk and biber)
-- Compiles `main.tex` to PDF using latexmk with full biblatex/biber support
+- Automatically installs Quarto and TinyTeX (lightweight TeX distribution)
+- Renders `index.qmd` and all chapter `.qmd` files to PDF using Quarto
+- Manages citations automatically using your `bibliography/references.bib` file
 - Uploads the compiled PDF as a downloadable artifact (available for 30 days)
 - Optionally attaches the PDF to GitHub releases when you create a version tag
 
@@ -19,41 +20,53 @@ This repository includes an automated workflow that compiles your LaTeX document
 
 ## Project Structure
 
-- **main.tex** - Main dissertation document
-- **chapters/** - Individual chapter files
-  - 01_introduction.tex
-  - 02_literature_review.tex
-  - 03_methodology.tex
-  - 04_results.tex
-  - 05_discussion.tex
-  - 06_conclusion.tex
-- **appendices/** - Appendix files
-- **figures/** - Images and figures
-- **settings/** - LaTeX configuration and preamble
-- **references.bib** - Bibliography/references
+- **`index.qmd`** — Frontmatter (title page, abstract)
+- **`_quarto.yml`** — Quarto project configuration
+- **`chapters/`** — Individual chapter files (`.qmd` Markdown files)
+  - `01_introduction.qmd`
+  - `02_literature_review.qmd`
+  - `03_methodology.qmd`
+  - `04_results.qmd`
+  - `05_discussion.qmd`
+  - `06_conclusion.qmd`
+  - `appendix_a.qmd`
+- **`appendices/`** — Appendix files (if needed; also can use `chapters/`)
+- **`figures/`** — Images and figures
+- **`bibliography/`** — Bibliography files
+  - `references.bib` — BibTeX format bibliography
+- **`.vscode/`** — VS Code settings for LaTeX Workshop integration
 
 ## Building the Document
 
-**Using latexmk (recommended):**
+**Using Quarto (recommended):**
+
+Build the dissertation to PDF:
 ```bash
-latexmk -pdf main.tex
+quarto render --to pdf
 ```
 
-**Manual compilation:**
+Live preview with auto-reload on changes:
 ```bash
-pdflatex main.tex
-biber main
-pdflatex main.tex
-pdflatex main.tex
+quarto preview
 ```
 
-Or use your LaTeX editor's build command. Make sure your editor is configured to use **biber** as the bibliography engine (not bibtex).
+Or use the included Makefile:
+```bash
+make            # Build with Quarto (default)
+make quarto-watch  # Live preview
+make quarto-clean  # Clean build artifacts
+```
+
+**Editing Chapters:**
+- Edit any `.qmd` file in the `chapters/` directory
+- Changes are automatically reflected on the next build
+- Use Markdown syntax with embedded math, citations, and figures
 
 ## Notes
 
-- Edit the title and author information in `main.tex`
-- Add your references to `bibliography/references.bib` in BibTeX format
-- Place figures in the `figures/` directory and reference them as shown in the templates
-- Each chapter can be edited independently in its respective file
-- This template uses biblatex with the APA style - citations work with `\autocite{}`, `\textcite{}`, etc.
-- Compatible with Zotero - export your library as BibTeX and use the citation keys
+- **Edit `_quarto.yml`** to change the dissertation title, author, and chapter order
+- **Add citations** using `[@citationKey]` syntax — compatible with Zotero and other reference managers
+- **Place figures** in the `figures/` directory and reference with `![caption](../figures/filename.png){#fig:label}`
+- **Math** — Use `$inline$` for inline math and `$$display$$` for display equations
+- **Cross-references** — Use `@fig:label`, `@tbl:label`, `@eq:label` to reference figures, tables, and equations
+- **Quarto documentation** — Learn more at https://quarto.org/docs/books/

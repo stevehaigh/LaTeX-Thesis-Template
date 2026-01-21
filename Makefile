@@ -1,49 +1,73 @@
-# Makefile for LaTeX Dissertation
+# Makefile for LaTeX/Quarto Dissertation
 
-# Main LaTeX file (without extension)
+# Main LaTeX file (without extension) - deprecated in favor of Quarto
 MAIN = main
 
 # LaTeX compiler
 LATEX = pdflatex
 BIBER = biber
 
-.PHONY: all clean cleanall watch help
+# Quarto output
+QUARTO_OUT = dissertation.pdf
 
-# Default target: build the PDF
-all: $(MAIN).pdf
+.PHONY: all clean cleanall watch help quarto quarto-watch quarto-clean
 
-# Build the PDF using latexmk (recommended)
+# Default target: build with Quarto (recommended)
+all: quarto
+
+# Build PDF using Quarto (recommended)
+quarto:
+	quarto render --to pdf
+
+# Continuous compilation with Quarto (watch mode)
+quarto-watch:
+	quarto preview
+
+# Clean Quarto build artifacts
+quarto-clean:
+	rm -rf _output/
+	rm -f *.html
+	# Remove Quarto-generated LaTeX intermediates
+	rm -f index.tex index.aux index.log index.out index.toc index.bbl index.bcf index.blg index.run.xml index.synctex.gz
+
+# Legacy LaTeX targets (kept for backward compatibility)
+
+# Build the PDF using latexmk (deprecated)
 $(MAIN).pdf: $(MAIN).tex
 	latexmk -pdf -bibtex $(MAIN).tex
 
-# Alternative: manual build process
+# Alternative: manual build process (deprecated)
 manual:
 	$(LATEX) $(MAIN).tex
 	$(BIBER) $(MAIN)
 	$(LATEX) $(MAIN).tex
 	$(LATEX) $(MAIN).tex
 
-# Continuous compilation (watch mode)
+# Continuous compilation (watch mode) - deprecated
 watch:
 	latexmk -pdf -pvc -bibtex $(MAIN).tex
 
-# Clean auxiliary files
-clean:
+# Clean auxiliary files (deprecated)
+clean: quarto-clean
 	latexmk -c
 	rm -f *.bbl *.bcf *.blg *.run.xml *.synctex.gz
 
-# Clean all generated files including PDF
-cleanall:
+# Clean all generated files including PDF (deprecated)
+cleanall: quarto-clean
 	latexmk -C
 	rm -f *.bbl *.bcf *.blg *.run.xml *.synctex.gz
 
 # Help target
 help:
-	@echo "Available targets:"
-	@echo "  make           - Build the PDF (default)"
-	@echo "  make all       - Build the PDF"
+	@echo "Quarto targets (recommended):"
+	@echo "  make           - Build dissertation PDF with Quarto (default)"
+	@echo "  make quarto    - Build dissertation PDF with Quarto"
+	@echo "  make quarto-watch - Live preview with Quarto"
+	@echo "  make quarto-clean  - Clean Quarto build artifacts"
+	@echo ""
+	@echo "Legacy LaTeX targets (deprecated):"
 	@echo "  make manual    - Build using manual pdflatex/biber commands"
-	@echo "  make watch     - Continuous compilation (rebuilds on file changes)"
+	@echo "  make watch     - Continuous compilation in LaTeX"
 	@echo "  make clean     - Remove auxiliary files (keep PDF)"
 	@echo "  make cleanall  - Remove all generated files including PDF"
 	@echo "  make help      - Show this help message"

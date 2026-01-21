@@ -7,11 +7,23 @@
 *.fls
 *.log
 *.out
-*.pdf
 *.synctex.gz
 *.toc
 *.lof
 *.lot
+
+# Quarto-generated intermediates
+_output/
+index.tex
+index.aux
+index.log
+index.out
+index.toc
+index.bbl
+index.bcf
+index.blg
+index.run.xml
+index.synctex.gz
 
 ## IDE
 .vscode/
@@ -26,3 +38,6 @@ Thumbs.db
 ## Build
 build/
 dist/
+
+/.quarto/
+**/*.quarto_ipynb

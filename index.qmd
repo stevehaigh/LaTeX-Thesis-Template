@@ -1,1 +1,9 @@
+---
+title: "Dissertation Title"
+author: "Author Name"
+date: today
+---
+
+# Abstract {.unnumbered}
+
 This is the abstract of the dissertation. Include a brief summary of your research, methodology, and key findings.
