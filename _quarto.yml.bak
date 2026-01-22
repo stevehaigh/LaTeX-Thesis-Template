@@ -1,0 +1,53 @@
+project:
+  type: book
+  output-dir: build
+
+book:
+  title: "Feasibility of a Whole-Cell Model of the Human Platelet"
+  author: "S. A. Haigh"
+  date: today
+  chapters:
+    - index.qmd
+    - chapters/01_introduction.qmd
+    - chapters/02_literature_review.qmd
+    - chapters/03_methodology.qmd
+    - chapters/04_results.qmd
+    - chapters/05_discussion.qmd
+    - chapters/06_conclusion.qmd
+    - chapters/07_references.qmd
+  appendices:
+    - chapters/appendix_a.qmd
+
+bibliography: bibliography/references.bib
+
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: book
+    classoption: [oneside, openany]
+    papersize: a4
+    fontsize: 12pt
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+    linestretch: 1.5
+    number-sections: true
+  pdf-print:
+    pdf-engine: pdflatex
+    documentclass: book
+    papersize: a4
+    fontsize: 12pt
+    geometry:
+      - top=1in
+      - bottom=1in
+      - left=1in
+      - right=1in
+    linestretch: 1.5
+    number-sections: true
+    output-file: "${title}-print.pdf"
+  epub:
+    number-sections: true
+  docx:
+    number-sections: true
