@@ -22,8 +22,7 @@ keywords: ["Keyword 1", "Keyword 2", "Keyword 3", "Keyword 4"]
 classification: "Biological Sciences - Biophysics and Computational Biology"
 date: last-modified
 format:
-  pdf:
-    cite-method: biblatex
+  pdf: default
   docx: default
   html: default
 ---
@@ -42,7 +41,7 @@ Your significance statement goes here (50-120 words). Explain the relevance and 
 
 Provide background and context for your research. Establish the problem or gap in knowledge that your study addresses. Keep this section concise—PNAS articles emphasize brevity.
 
-Cite references like this [@smith2020] or [@jones2019; @brown2021].
+Cite references like this [@karrWholeCellComputationalModel2012] or [@balabinPersonalizationComputationalSystems2024; @karrWholeCellComputationalModel2012].
 
 ## Results
 

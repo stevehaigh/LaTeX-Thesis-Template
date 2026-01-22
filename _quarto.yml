@@ -19,6 +19,14 @@ format:
     linestretch: 1.0
     number-sections: false
     keep-tex: true
+    cite-method: biblatex
+    biblio-style: authoryear
+    biblatexoptions:
+      - backend=biber
+      - style=authoryear
+      - maxcitenames=2
+      - uniquename=false
+      - uniquelist=false
     include-in-header:
       text: |
         \usepackage{times}

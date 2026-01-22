@@ -35,8 +35,6 @@ latex:
 watch:
 	quarto preview $(ARTICLE).qmd
 
-quarto-watch: watch
-
 clean:
 	rm -rf $(OUTDIR)
 	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
