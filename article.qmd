@@ -52,19 +52,11 @@ Present your main findings in a logical sequence. Use subsections as needed to o
 
 Results text here. Reference figures like @fig-example1 and tables like @tbl-example1.
 
-![Example figure caption. Describe what is shown clearly and concisely.](figures/example.png){#fig-example1 width=80%}
+![Example figure caption. Describe what is shown clearly and concisely.](figures/placeholder.png){#fig-example1 width=80%}
 
 ### Subsection 2
 
-Continue with additional results.
-
-| Parameter | Value | Unit |
-|-----------|-------|------|
-| A | 1.23 | m/s |
-| B | 4.56 | kg |
-| C | 7.89 | °C |
-
-: Example table caption. {#tbl-example1}
+Continue with additional results. For complex tables that need to span columns, use LaTeX directly or place in Supporting Information.
 
 ## Discussion
 
@@ -109,7 +101,7 @@ Example: "This work was supported by National Institutes of Health Grant R01-XXX
 
 ## Supporting Information {.page-break-before}
 
-**Note**: Supporting Information (SI) should typically be a separate document. This section is included here as a placeholder to show the structure. In practice, create a separate `si-appendix.qmd` file.
+**Note**: Supporting Information (SI) should typically be a separate document (`si-appendix.qmd`). This section is included here as a placeholder to show the structure.
 
 ### SI Materials and Methods
 
@@ -117,16 +109,11 @@ Extended methodological details that are essential but too lengthy for the main 
 
 ### SI Figures
 
-![SI Figure 1 caption.](figures/si-figure1.png){#fig-si1}
+Supplementary figures would go here (create `si-appendix.qmd` for actual SI content).
 
 ### SI Tables
 
-| Parameter | Condition 1 | Condition 2 |
-|-----------|-------------|-------------|
-| X | 1.0 | 2.0 |
-| Y | 3.0 | 4.0 |
-
-: SI Table 1 caption. {#tbl-si1}
+Supplementary tables would go here (create `si-appendix.qmd` for actual SI content).
 
 ### SI References
 
